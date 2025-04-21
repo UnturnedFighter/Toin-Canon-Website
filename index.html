@@ -1,77 +1,83 @@
-import { useState } from 'react'
-
-export default function Canon() {
-  const [search, setSearch] = useState('')
-
-  const categories = [
-    'GENERAL REFERENCE',
-    'CULTURE AND THE ARTS',
-    'GEOGRAPHY AND PLACES',
-    'HEALTH AND FITNESS',
-    'HISTORY AND EVENTS',
-    'HUMAN ACTIVITIES',
-    'NATURAL AND PHYSICAL SCIENCES',
-    'PEOPLE AND SELF',
-    'PHILOSOPHY AND THINKING',
-    'RELIGION AND BELIEF SYSTEMS',
-    'SOCIETY AND SOCIAL SCIENCES',
-    'TECHNOLOGY AND APPLIED SCIENCES'
-  ]
-
-  return (
-    <>
-      <header className="fixed top-0 left-0 right-0 z-50 p-4 border-b border-gray-200" style={{ backgroundColor: '#517DA1' }}>
-        <nav className="w-full px-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-white">Encyclopaedia Toin</h1>
-          <div className="space-x-4">
-            <button className="text-white bg-transparent border-none cursor-pointer">Home</button>
-            <button className="text-white bg-transparent border-none cursor-pointer">Canon</button>
-            <button className="text-white bg-transparent border-none cursor-pointer">Glossary</button>
-          </div>
-        </nav>
-      </header>
-
-      <div className="flex min-h-screen pt-16">
-        <aside className="w-64 p-4 pt-16 border-r border-gray-200 text-white fixed top-0 bottom-0" style={{ backgroundColor: '#3C5D78' }}>
-          <input
-            type="text"
-            placeholder="Search canon entries..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="mb-4 w-full px-3 py-2 border border-gray-300 rounded text-black"
-          />
-          <div className="space-y-2">
-            {categories.map((cat) => (
-              <button key={cat} className="w-full text-left px-3 py-2 rounded hover:bg-gray-700 text-white">
-                {cat}
-              </button>
-            ))}
-            <hr className="my-4 border-gray-300" />
-            <button
-              className="w-full text-left px-3 py-2 rounded text-white hover:bg-red-800"
-              style={{ backgroundColor: '#A6192E' }}
-              onClick={() => {
-                const password = prompt('Enter admin password:')
-                if (password === 'toinsecure') {
-                  window.location.href = '/admin'
-                } else if (password !== null) {
-                  alert('Incorrect password.')
-                }
-              }}
-            >
-              🔒 Canon Admin Panel
-            </button>
-          </div>
-        </aside>
-
-        <main className="flex-1 p-6 ml-64">
-          <h2 className="text-3xl font-bold mb-4">Canon Entries</h2>
-          <p className="text-gray-700 mb-6">
-            Select a category or use the search to explore the official canon of the Democratic States of Toin.
-          </p>
-          {/* Canon content will go here */}
-        </main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encyclopaedia Toin</title>
+  <script>
+    function goToAdminPanel() {
+      const password = prompt('Enter admin password:');
+      if (password === 'toinsecure') {
+        window.location.assign('/admin');
+      } else if (password !== null) {
+        alert('Incorrect password.');
+      }
+    }
+  </script>
+  <script>
+    function filterCategories() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const buttons = document.querySelectorAll('.category-button');
+      buttons.forEach(btn => {
+        const visible = btn.textContent.toLowerCase().includes(input);
+        btn.style.display = visible ? 'block' : 'none';
+      });
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="m-0">
+  <header class="fixed top-0 left-0 right-0 z-50 p-4 border-b border-gray-200" style="background-color: #517DA1;">
+    <nav class="w-full px-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-white">Encyclopaedia Toin</h1>
+      <div class="space-x-4">
+        <button class="text-white bg-transparent border-none cursor-pointer">Home</button>
+        <button class="text-white bg-transparent border-none cursor-pointer">Canon</button>
+        <button class="text-white bg-transparent border-none cursor-pointer">Glossary</button>
       </div>
-    </>
-  )
-}
+    </nav>
+  </header>
+
+  <div class="flex min-h-screen pt-16">
+    <aside class="w-64 p-4 pt-16 border-r border-gray-200 text-white fixed top-0 bottom-0" style="background-color: #3C5D78;">
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Search canon entries..."
+        onkeyup="filterCategories()"
+        class="mb-4 w-full px-3 py-2 border border-gray-300 rounded text-black"
+      />
+      <div class="space-y-2">
+        <button class="category-button w-full text-left px-3 py-2 rounded hover:bg-gray-700 text-white">GENERAL REFERENCE</button>
+        <button class="category-button w-full text-left px-3 py-2 rounded hover:bg-gray-700 text-white">CULTURE AND THE ARTS</button>
+        <button class="category-button w-full text-left px-3 py-2 rounded hover:bg-gray-700 text-white">GEOGRAPHY AND PLACES</button>
+        <button class="category-button w-full text-left px-3 py-2 rounded hover:bg-gray-700 text-white">HEALTH AND FITNESS</button>
+        <button class="category-button w-full text-left px-3 py-2 rounded hover:bg-gray-700 text-white">HISTORY AND EVENTS</button>
+        <button class="category-button w-full text-left px-3 py-2 rounded hover:bg-gray-700 text-white">HUMAN ACTIVITIES</button>
+        <button class="category-button w-full text-left px-3 py-2 rounded hover:bg-gray-700 text-white">NATURAL AND PHYSICAL SCIENCES</button>
+        <button class="category-button w-full text-left px-3 py-2 rounded hover:bg-gray-700 text-white">PEOPLE AND SELF</button>
+        <button class="category-button w-full text-left px-3 py-2 rounded hover:bg-gray-700 text-white">PHILOSOPHY AND THINKING</button>
+        <button class="category-button w-full text-left px-3 py-2 rounded hover:bg-gray-700 text-white">RELIGION AND BELIEF SYSTEMS</button>
+        <button class="category-button w-full text-left px-3 py-2 rounded hover:bg-gray-700 text-white">SOCIETY AND SOCIAL SCIENCES</button>
+        <button class="category-button w-full text-left px-3 py-2 rounded hover:bg-gray-700 text-white">TECHNOLOGY AND APPLIED SCIENCES</button>
+        <hr class="my-4 border-gray-300">
+        <button
+          onclick="goToAdminPanel()"
+          class="w-full text-left px-3 py-2 rounded text-white hover:bg-red-800"
+          style="background-color: #A6192E;"
+        >
+          🔒 Canon Admin Panel
+        </button>
+      </div>
+    </aside>
+
+    <main class="flex-1 p-6 ml-64">
+      <h2 class="text-3xl font-bold mb-4">Canon Entries</h2>
+      <p class="text-gray-700 mb-6">
+        Select a category or use the search to explore the official canon of the Democratic States of Toin.
+      </p>
+      <!-- Canon content will go here -->
+    </main>
+  </div>
+</body>
+</html>
