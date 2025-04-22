@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel – Encyclopædia Toin</title>
+  <style>
+    ul, li { list-style: none; padding: 0; margin: 0; }
+    .custom-dropdown .options ul {
+      padding-left: 1em;
+    }
+    .custom-dropdown .options li span {
+      display: block;
+      padding: 0.5em;
+      cursor: pointer;
+    }
+    .custom-dropdown .options li span:hover {
+      background-color: #f0f0f0;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #517DA1;
+      padding: 2em 1em 2.5em 1em;
+      color: white;
+      text-align: center;
+      font-size: 1.5em;
+    }
+    nav {
+      margin-top: 1em;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 0.5em;
+      font-weight: bold;
+      padding: 0.25em 0.5em;
+      border-radius: 5px;
+    }
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2em;
+      background: white;
+      border-radius: 10px;
+    }
+    label {
+      display: block;
+      margin-top: 1em;
+      font-weight: bold;
+    }
+    input[type="text"], #editor {
+      width: 100%;
+      padding: 0.5em;
+      margin-top: 0.25em;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #editor {
+      min-height: 300px;
+      background: #fff;
+      margin-top: 1em;
+    }
+    .toolbar button {
+      margin-right: 0.5em;
+      margin-top: 1em;
+    }
+    button {
+      background-color: #3C5D78;
+      color: white;
+      border: none;
+      padding: 0.5em 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    .custom-dropdown {
+      position: relative;
+      width: 100%;
+      margin-top: 0.25em;
+    }
+    .custom-dropdown .selected {
+      padding: 0.5em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      cursor: pointer;
+    }
+    .custom-dropdown .options {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-top: none;
+      border-radius: 0 0 5px 5px;
+      z-index: 10;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    .custom-dropdown.open .options {
+      display: block;
+    }
+    .custom-dropdown .options li {
+      padding: 0.5em;
+      cursor: pointer;
+    }
+    .custom-dropdown .options li:hover {
+      background-color: #f0f0f0;
+    }
+    .custom-dropdown .options ul {
+      margin: 0;
+      padding-left: 1em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="font-size: 2em;">Encyclopædia Toin</div>
+    <nav>
+      <a href="index.html">HOME PAGE</a> |
+      <a href="canon.html">CANON</a> |
+      <a href="glossary.html">GLOSSARY</a> |
+      <a href="admin.html">ADMIN PANEL</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Create a New Canon Entry</h1>
+    <label for="title">Title</label>
+    <input type="text" id="title" placeholder="Georgia Heather Ellison">
+    <label for="category">Category</label>
+    <div id="category-dropdown" class="custom-dropdown">
+      <div class="selected" onclick="toggleDropdown()">Select a category...</div>
+      <ul class="options">
+        <li onclick="selectCategory('Maps')">Maps</li>
+        <li>
+          <span onclick="selectCategory('History')">History</span>
+          <ul>
+            <li onclick="selectCategory('History – Prehistory')">– Prehistory</li>
+            <li onclick="selectCategory('History – 1649 to 1683')">– 1649 to 1683</li>
+            <li onclick="selectCategory('History – 1713 to 1719')">– 1713 to 1719</li>
+            <li onclick="selectCategory('History – 1720 to 1729')">– 1720 to 1729</li>
+            <li onclick="selectCategory('History – 1730 to 1749')">– 1730 to 1749</li>
+            <li onclick="selectCategory('History – 1750 to 1779')">– 1750 to 1779</li>
+            <li onclick="selectCategory('History – 1780 to 1799')">– 1780 to 1799</li>
+            <li onclick="selectCategory('History – 1800 to 1819')">– 1800 to 1819</li>
+            <li onclick="selectCategory('History – 1820 to 1822')">– 1820 to 1822</li>
+            <li onclick="selectCategory('History – 1847 to 1879')">– 1847 to 1879</li>
+            <li onclick="selectCategory('History – 1880 to 1899')">– 1880 to 1899</li>
+            <li onclick="selectCategory('History – 1900 to 1914')">– 1900 to 1914</li>
+            <li onclick="selectCategory('History – 1914 to 1918')">– 1914 to 1918</li>
+            <li onclick="selectCategory('History – 1918 to 1939')">– 1918 to 1939</li>
+            <li onclick="selectCategory('History – 1939 to 1945')">– 1939 to 1945</li>
+            <li onclick="selectCategory('History – 1945 to 1949')">– 1945 to 1949</li>
+            <li onclick="selectCategory('History – 1950 to 1979')">– 1950 to 1979</li>
+            <li onclick="selectCategory('History – 1980 to 1999')">– 1980 to 1999</li>
+            <li onclick="selectCategory('History – 2000 to 2019')">– 2000 to 2019</li>
+            <li onclick="selectCategory('History – 2020 to present')">– 2020 to present</li>
+          </ul>
+        </li>
+        <li>
+          <span onclick="selectCategory('Geography')">Geography</span>
+          <ul>
+            <li onclick="selectCategory('Geography – Climate')">– Climate</li>
+            <li onclick="selectCategory('Geography – Topography')">– Topography</li>
+            <li onclick="selectCategory('Geography – Fauna')">– Fauna</li>
+            <li onclick="selectCategory('Geography – Flora')">– Flora</li>
+          </ul>
+        </li>
+        <li>
+          <span onclick="selectCategory('Politics')">Politics</span>
+          <ul>
+            <li onclick="selectCategory('Politics – Administrative Divisions')">– Administrative Divisions</li>
+            <li onclick="selectCategory('Politics – Foreign Relations')">– Foreign Relations</li>
+            <li onclick="selectCategory('Politics – Law and Criminal Justice')">– Law and Criminal Justice</li>
+            <li onclick="selectCategory('Politics – Public and Emergency Services')">– Public and Emergency Services</li>
+            <li>
+              <span onclick="selectCategory('Politics – Military')">– Military</span>
+              <ul>
+                <li onclick="selectCategory('Politics – Military – Toinan Air Force')">— Toinan Air Force</li>
+                <li onclick="selectCategory('Politics – Military – Toinan Army')">— Toinan Army</li>
+                <li>
+                  <span onclick="selectCategory('Politics – Military – Toinan Naval Service')">— Toinan Naval Service</span>
+                  <ul>
+                    <li onclick="selectCategory('Politics – Military – Toinan Naval Service – Toinan Coast Guard')">—— Toinan Coast Guard</li>
+                    <li onclick="selectCategory('Politics – Military – Toinan Naval Service – Toinan Navy')">—— Toinan Navy</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span onclick="selectCategory('Economy')">Economy</span>
+          <ul>
+            <li onclick="selectCategory('Economy – Roads and Highways')">– Roads and Highways</li>
+            <li onclick="selectCategory('Economy – Public Transit')">– Public Transit</li>
+            <li onclick="selectCategory('Economy – Rail')">– Rail</li>
+            <li onclick="selectCategory('Economy – Water')">– Water</li>
+            <li onclick="selectCategory('Economy – Air')">– Air</li>
+            <li onclick="selectCategory('Economy – Aerospace')">– Aerospace</li>
+            <li onclick="selectCategory('Economy – Agriculture')">– Agriculture</li>
+            <li onclick="selectCategory('Economy – Clean Energy')">– Clean Energy</li>
+            <li onclick="selectCategory('Economy – Clean Technology')">– Clean Technology</li>
+            <li onclick="selectCategory('Economy – Forestry')">– Forestry</li>
+            <li onclick="selectCategory('Economy – Information and Communications Technology (ICT)')">– Information and Communications Technology (ICT)</li>
+            <li onclick="selectCategory('Economy – Digital Media and Entertainment')">– Digital Media and Entertainment</li>
+            <li onclick="selectCategory('Economy – Life Sciences')">– Life Sciences</li>
+            <li onclick="selectCategory('Economy – Mining and Critical Minerals')">– Mining and Critical Minerals</li>
+            <li onclick="selectCategory('Economy – Natural Gas')">– Natural Gas</li>
+            <li onclick="selectCategory('Economy – Marine and Ocean Technology')">– Marine and Ocean Technology</li>
+            <li onclick="selectCategory('Economy – Seafood')">– Seafood</li>
+            <li onclick="selectCategory('Economy – Tourism')">– Tourism</li>
+          </ul>
+        </li>
+        <li>
+          <span onclick="selectCategory('Demographics')">Demographics</span>
+          <ul>
+            <li onclick="selectCategory('Demographics – Population')">– Population</li>
+            <li onclick="selectCategory('Demographics – Ethnicity')">– Ethnicity</li>
+            <li onclick="selectCategory('Demographics – Language')">– Language</li>
+            <li onclick="selectCategory('Demographics – Religion')">– Religion</li>
+            <li onclick="selectCategory('Demographics – Migration')">– Migration</li>
+            <li onclick="selectCategory('Demographics – Urbanisation')">– Urbanisation</li>
+            <li onclick="selectCategory('Demographics – Education')">– Education</li>
+            <li onclick="selectCategory('Demographics – Healthcare')">– Healthcare</li>
+          </ul>
+        </li>
+        <li>
+          <span onclick="selectCategory('Culture')">Culture</span>
+          <ul>
+            <li>
+              <span onclick="selectCategory('Culture – Indigenous Culture')">– Indigenous Culture</span>
+              <ul>
+                <li onclick="selectCategory('Culture – Indigenous Culture – Visual Arts')">— Visual Arts</li>
+                <li onclick="selectCategory('Culture – Indigenous Culture – Music')">— Music</li>
+                <li onclick="selectCategory('Culture – Indigenous Culture – Fashion')">— Fashion</li>
+                <li onclick="selectCategory('Culture – Indigenous Culture – Cuisine')">— Cuisine</li>
+                <li onclick="selectCategory('Culture – Indigenous Culture – Sports')">— Sports</li>
+                <li onclick="selectCategory('Culture – Indigenous Culture – Symbols')">— Symbols</li>
+              </ul>
+            </li>
+            <li>
+              <span onclick="selectCategory('Culture – Toinan Culture')">– Toinan Culture</span>
+              <ul>
+                <li onclick="selectCategory('Culture – Toinan Culture – Literature')">— Literature</li>
+                <li onclick="selectCategory('Culture – Toinan Culture – Mass Media')">— Mass Media</li>
+                <li onclick="selectCategory('Culture – Toinan Culture – Theatre')">— Theatre</li>
+                <li onclick="selectCategory('Culture – Toinan Culture – Visual Arts')">— Visual Arts</li>
+                <li onclick="selectCategory('Culture – Toinan Culture – Music')">— Music</li>
+                <li onclick="selectCategory('Culture – Toinan Culture – Fashion')">— Fashion</li>
+                <li onclick="selectCategory('Culture – Toinan Culture – Cinema')">— Cinema</li>
+                <li onclick="selectCategory('Culture – Toinan Culture – Cuisine')">— Cuisine</li>
+                <li onclick="selectCategory('Culture – Toinan Culture – Sports')">— Sports</li>
+                <li onclick="selectCategory('Culture – Toinan Culture – Symbols')">— Symbols</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li onclick="selectCategory('People')">People</li>
+        <li onclick="selectCategory('Miscellaneous')">Miscellaneous</li>
+      </ul>
+    </div>
+    <input type="hidden" id="category">
+    <label for="image-upload">Upload Images</label>
+    <input type="file" id="image-upload" multiple accept="image/*">
+    <div class="toolbar">
+      <button onclick="format('bold')">Bold</button>
+      <button onclick="format('italic')">Italic</button>
+      <button onclick="format('underline')">Underline</button>
+      <button onclick="formatBlock('H2')">H2</button>
+      <button onclick="formatBlock('H3')">H3</button>
+      <button onclick="insertImage()">Insert Uploaded Image</button>
+    </div>
+    <label>Entry Body</label>
+    <div id="editor" contenteditable="true"></div>
+    <button onclick="createEntry()">Add to Canon</button>
+    <section id="canon-preview" style="margin-top: 3em;">
+      <h2>Canon Entries (Live Preview)</h2>
+      <div id="canon-list"></div>
+    </section>
+  </main>
+  <script>
+    const uploadedImages = [];
+    document.getElementById('image-upload').addEventListener('change', function (event) {
+      const files = event.target.files;
+      for (const file of files) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          uploadedImages.push(e.target.result);
+          alert(`Image uploaded: ${file.name}`);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+    function format(cmd) {
+      document.execCommand(cmd);
+    }
+    function formatBlock(tag) {
+      document.execCommand('formatBlock', false, tag);
+    }
+    function insertImage() {
+      if (uploadedImages.length === 0) {
+        alert("No images uploaded yet.");
+        return;
+      }
+      const url = uploadedImages[uploadedImages.length - 1];
+      document.execCommand('insertImage', false, url);
+    }
+    function createEntry() {
+      const title = document.getElementById('title').value.trim();
+      const category = document.getElementById('category').value.trim();
+      const content = document.getElementById('editor').innerHTML.trim();
+      const entry = { title, category, content };
+      if (!window.entries) window.entries = [];
+      window.entries.push(entry);
+      renderCanonList();
+    }
+    function toggleDropdown() {
+      document.getElementById('category-dropdown').classList.toggle('open');
+    }
+    function selectCategory(value) {
+      document.getElementById('category').value = value;
+      document.querySelector('#category-dropdown .selected').textContent = value;
+      document.getElementById('category-dropdown').classList.remove('open');
+    }
+    function renderCanonList() {
+      const list = document.getElementById('canon-list');
+      if (!list || !window.entries) return;
+      list.innerHTML = '';
+      window.entries.forEach(entry => {
+        const div = document.createElement('div');
+        div.style.border = '1px solid #3C5D78';
+        div.style.borderRadius = '10px';
+        div.style.padding = '1em';
+        div.style.marginBottom = '1em';
+        div.innerHTML = `
+          <h3>${entry.title} <span style="font-size: 0.8em; color: #3C5D78;">(${entry.category})</span></h3>
+          <div>${entry.content}</div>
+        `;
+        list.appendChild(div);
+      });
+    }
+  </script>
+</body>
+</html>
