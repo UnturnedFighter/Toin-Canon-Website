@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encyclopædia Toin – Canon List</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #517DA1;
+      padding: 2em 1em 2.5em 1em;
+      color: white;
+      text-align: center;
+      font-size: 1.5em;
+      position: relative;
+    }
+
+    nav {
+      position: relative;
+      margin-top: 1em;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 0.5em;
+      font-weight: bold;
+      padding: 0.25em 0.5em;
+      border-radius: 5px;
+    }
+
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .container {
+      display: flex;
+    }
+
+    .sidebar {
+      width: 15%;
+      background-color: #3C5D78;
+      color: white;
+      padding: 1em;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .sidebar h3 {
+      margin-top: 0;
+    }
+
+    .sidebar input[type="text"] {
+      width: 100%;
+      padding: 0.5em;
+      margin-bottom: 1em;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .category {
+      padding: 0.25em 0;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .subcategory {
+      margin-left: 1em;
+      cursor: pointer;
+    }
+
+    .content {
+      width: 85%;
+      padding: 2em;
+    }
+
+    .canon-entry {
+      background-color: white;
+      border: 1px solid #3C5D78;
+      border-radius: 10px;
+      margin-bottom: 1.5em;
+      padding: 1em;
+      display: none;
+      gap: 1em;
+    }
+
+    .canon-entry.visible {
+      display: flex;
+    }
+
+    .canon-entry img {
+      width: 120px;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .canon-entry-content {
+      flex-grow: 1;
+    }
+
+    .read-more {
+      background-color: #3C5D78;
+      color: white;
+      padding: 0.5em 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 0.5em;
+    }
+
+    .read-more:hover {
+      opacity: 0.9;
+    }
+
+    .category-label {
+      font-size: 0.75em;
+      font-weight: normal;
+      color: #3C5D78;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="font-size: 2em; margin-bottom: 0.5em;">Encyclopædia Toin</div>
+    <nav>
+      <a href="index.html">HOME PAGE</a> |
+      <a href="canon.html">CANON</a> |
+      <a href="glossary.html">GLOSSARY</a> |
+      <a href="admin.html">ADMIN PANEL</a>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="sidebar">
+      <input type="text" placeholder="Search...">
+      <div class="category">Maps</div>
+
+      <div class="category">History</div>
+      <div class="subcategory">Prehistory</div>
+      <div class="subcategory">1649 to 1683</div>
+      <div class="subcategory">1713 to 1719</div>
+      <div class="subcategory">1720 to 1729</div>
+      <div class="subcategory">1730 to 1749</div>
+      <div class="subcategory">1750 to 1779</div>
+      <div class="subcategory">1780 to 1799</div>
+      <div class="subcategory">1800 to 1819</div>
+      <div class="subcategory">1820 to 1822</div>
+      <div class="subcategory">1847 to 1879</div>
+      <div class="subcategory">1880 to 1899</div>
+      <div class="subcategory">1900 to 1914</div>
+      <div class="subcategory">1914 to 1918</div>
+      <div class="subcategory">1918 to 1939</div>
+      <div class="subcategory">1939 to 1945</div>
+      <div class="subcategory">1945 to 1949</div>
+      <div class="subcategory">1950 to 1979</div>
+      <div class="subcategory">1980 to 1999</div>
+      <div class="subcategory">2000 to 2019</div>
+      <div class="subcategory">2020 to present</div>
+
+      <div class="category">Geography</div>
+      <div class="subcategory">Climate</div>
+      <div class="subcategory">Topography</div>
+      <div class="subcategory">Fauna</div>
+      <div class="subcategory">Flora</div>
+
+      <div class="category">Politics</div>
+      <div class="subcategory">Administrative Divisions</div>
+      <div class="subcategory">Foreign Relations</div>
+      <div class="subcategory">Law and Criminal Justice</div>
+      <div class="subcategory">Public and Emergency Services</div>
+      <div class="subcategory">Military</div>
+      <div class="subcategory" style="margin-left: 2em;">Toinan Air Force</div>
+      <div class="subcategory" style="margin-left: 2em;">Toinan Army</div>
+      <div class="subcategory" style="margin-left: 2em;">Toinan Naval Service</div>
+      <div class="subcategory" style="margin-left: 3em;">Toinan Coast Guard</div>
+      <div class="subcategory" style="margin-left: 3em;">Toinan Navy</div>
+
+      <div class="category">Economy</div>
+      <div class="subcategory">Roads and Highways</div>
+      <div class="subcategory">Public Transit</div>
+      <div class="subcategory">Rail</div>
+      <div class="subcategory">Water</div>
+      <div class="subcategory">Air</div>
+      <div class="subcategory">Aerospace</div>
+      <div class="subcategory">Agriculture</div>
+      <div class="subcategory">Clean Energy</div>
+      <div class="subcategory">Clean Technology</div>
+      <div class="subcategory">Forestry</div>
+      <div class="subcategory">Information and Communications Technology (ICT)</div>
+      <div class="subcategory">Digital Media and Entertainment</div>
+      <div class="subcategory">Life Sciences</div>
+      <div class="subcategory">Mining and Critical Minerals</div>
+      <div class="subcategory">Natural Gas</div>
+      <div class="subcategory">Marine and Ocean Technology</div>
+      <div class="subcategory">Seafood</div>
+      <div class="subcategory">Tourism</div>
+
+      <div class="category">Demographics</div>
+      <div class="subcategory">Population</div>
+      <div class="subcategory">Ethnicity</div>
+      <div class="subcategory">Language</div>
+      <div class="subcategory">Religion</div>
+      <div class="subcategory">Migration</div>
+      <div class="subcategory">Urbanisation</div>
+      <div class="subcategory">Education</div>
+      <div class="subcategory">Healthcare</div>
+
+      <div class="category">Culture</div>
+      <div class="subcategory">Indigenous Culture</div>
+      <div class="subcategory" style="margin-left: 2em;">Visual Arts</div>
+      <div class="subcategory" style="margin-left: 2em;">Music</div>
+      <div class="subcategory" style="margin-left: 2em;">Fashion</div>
+      <div class="subcategory" style="margin-left: 2em;">Cuisine</div>
+      <div class="subcategory" style="margin-left: 2em;">Sports</div>
+      <div class="subcategory" style="margin-left: 2em;">Symbols</div>
+      <div class="subcategory">Toinan Culture</div>
+      <div class="subcategory" style="margin-left: 2em;">Literature</div>
+      <div class="subcategory" style="margin-left: 2em;">Mass Media</div>
+      <div class="subcategory" style="margin-left: 2em;">Theatre</div>
+      <div class="subcategory" style="margin-left: 2em;">Visual Arts</div>
+      <div class="subcategory" style="margin-left: 2em;">Music</div>
+      <div class="subcategory" style="margin-left: 2em;">Fashion</div>
+      <div class="subcategory" style="margin-left: 2em;">Cinema</div>
+      <div class="subcategory" style="margin-left: 2em;">Cuisine</div>
+      <div class="subcategory" style="margin-left: 2em;">Sports</div>
+      <div class="subcategory" style="margin-left: 2em;">Symbols</div>
+
+      <div class="category">People</div>
+      <div class="category">Miscellaneous</div>
+    </div>
+    <div class="content">
+      <div class="canon-entry visible" data-category="History – 1847 to 1879">
+        <img src="placeholder.jpg" alt="Preview Image">
+        <div class="canon-entry-content">
+          <h3>Entry Title <span class="category-label">(Category: History – 1847 to 1879)</span></h3>
+          <p>This is a short preview of the canon entry. It gives a quick glance at the content and context before clicking through.</p>
+          <button class="read-more">READ MORE</button>
+        </div>
+      </div>
+
+      <div class="canon-entry visible" data-category="Geography – Topography">
+        <img src="placeholder2.jpg" alt="Preview Image">
+        <div class="canon-entry-content">
+          <h3>Second Entry <span class="category-label">(Category: Geography – Topography)</span></h3>
+          <p>This is another sample preview from a different category to test filtering functionality.</p>
+          <button class="read-more">READ MORE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const entries = document.querySelectorAll('.canon-entry');
+    const subcategories = document.querySelectorAll('.subcategory');
+    const categories = document.querySelectorAll('.category');
+
+    function showCategory(categoryText) {
+      entries.forEach(entry => {
+        entry.classList.remove('visible');
+        const entryCat = entry.getAttribute('data-category');
+        if (entryCat && entryCat.includes(categoryText)) {
+          entry.classList.add('visible');
+        }
+      });
+    }
+
+    subcategories.forEach(sub => {
+      sub.addEventListener('click', () => {
+        showCategory(sub.textContent.trim());
+      });
+    });
+
+    categories.forEach(cat => {
+      cat.addEventListener('click', () => {
+        showCategory(cat.textContent.trim());
+      });
+    });
+
+    entries.forEach(e => e.classList.add('visible'));
+  </script>
+</body>
+</html>
